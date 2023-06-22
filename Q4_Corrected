@@ -1,0 +1,36 @@
+#include<stdio.h>
+int main(){
+    struct c{
+        int r[2];
+        int i[2];
+        int res[2];
+    }c;
+    printf("Enter the value for r1\n");
+    scanf("%d",&c.r[0]);
+    
+    printf("Enter the value for r2\n");
+    scanf("%d",&c.r[1]);
+    
+    printf("Enter the value for i1\n");
+    scanf("%d",&c.i[0]);
+    
+    printf("Enter the value for i2\n");
+    scanf("%d",&c.i[1]);
+    
+    int res[4];
+    
+    res[0]=c.r[0]*c.r[1];
+    res[1]=c.i[0]*c.i[1];
+    res[2]=c.r[0]*c.i[0];
+    res[3]=c.r[1]*c.i[1];
+    
+    int result1,result2;
+    result1=res[0]-res[1];
+    result2=res[2]+res[3];
+    
+    
+    
+    printf("Result is %d + %d i\n",result1,result2);
+   
+    return 0;
+}
