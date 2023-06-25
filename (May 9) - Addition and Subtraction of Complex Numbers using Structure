@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main()
+{
+    int a, b, c, d;
+    struct complexn
+    {
+        int a;
+        int b;
+    } complex[2];
+    
+    scanf("%d", &complex[0].a);
+    scanf("%d", &complex[0].b);
+    scanf("%d", &complex[1].a);
+    scanf("%d", &complex[1].b);
+    
+    a = complex[0].a + complex[1].a;
+    b = complex[0].b + complex[1].b;
+    c = complex[0].a - complex[1].a;
+    d = complex[0].b - complex[1].b;
+     
+    
+    printf("%d+%di\n", a, b);
+    printf("%d+%di\n", c, d);
+    
+    return 0;
+}
