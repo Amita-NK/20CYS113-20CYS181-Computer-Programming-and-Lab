@@ -1,0 +1,32 @@
+#include<stdio.h>
+
+int isprime(int n) {
+    if (n == 0 || n == 1) {
+        return 0;
+    }
+    for (int i = 2; i <= n / 2; ++i) {
+        if (n % i == 0)
+            return 0;
+    }
+    return 1;
+}
+
+void generatePrimes(int s, int e) {
+    printf("Prime numbers between %d and %d are:", s, e);
+    for (int i = s; i <= e; i++) {
+        if (isprime(i)) {
+            printf(" %d", i);
+        }
+    }
+    printf("\n");
+}
+
+int main() {
+    int s, e;
+  
+    scanf("%d", &s);
+   
+    scanf("%d", &e);
+    generatePrimes(s, e);
+    return 0;
+}
