@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main() {
+    float area;
+
+    struct sd {
+        union d {
+            double length[2];
+            float radius;
+        } d;
+    } sd;
+    
+    enum shapetype {
+        circle = 1,
+        rectangle
+    } shape;
+    
+   
+    scanf("%d",&shape);
+    
+    
+     if (shape == circle) {
+        scanf("%f", &sd.d.radius);
+        area = 3.14*(sd.d.radius * sd.d.radius);
+        printf("Area of the circle: %.4f units\n", area);
+    } 
+    else if (shape == rectangle) {
+        scanf("%lf", &sd.d.length[0]);
+        scanf("%lf", &sd.d.length[1]);
+        area = sd.d.length[1] * sd.d.length[0];
+        printf("Area of the rectangle: %.4f units\n", area);
+        }
+        else {
+        printf("Invalid choice!\n");
+    }
+
+    return 0;
+}
