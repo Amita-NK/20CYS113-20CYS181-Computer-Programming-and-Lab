@@ -1,0 +1,123 @@
+#include <stdio.h>
+#define MAX_STUDENTS 3
+struct Students {
+    char name[100];
+    int age;
+    enum score { A, B, C, D, F 
+        } sc;
+} students[MAX_STUDENTS];
+
+int addStudent(struct Students *st) {
+    printf("Student added successfully.\n");
+    return 0;
+}
+
+int displayStudents(struct Students *s, int c) {
+    printf("List of students:\n");
+    for (int i = 0; i < c; i++) {
+        printf("Student %d\n", i + 1);
+        printf("Name: %s\n", s[i].name);
+        printf("Age: %d\n", s[i].age);
+        switch (s[i].sc) {
+            case A:
+                printf("Score: A\n");
+                break;
+            case B:
+                printf("Score: B\n");
+                break;
+            case C:
+                printf("Score: C\n");
+                break;
+            case D:
+                printf("Score: D\n");
+                break;
+            case F:
+                printf("Score: F\n");
+                break;
+        }
+    }
+    return 0;
+}
+
+int findHighestScoringStudent(struct Students *s, int c) {
+    printf("Highest-scoring student:\n");
+    int highestScoreIndex = 0;
+    for (int i = 1; i < c; i++) {
+        if (s[i].sc > s[highestScoreIndex].sc) {
+            highestScoreIndex = i;
+        }
+    }
+    printf("Name: %s\n", s[highestScoreIndex].name);
+    printf("Age: %d\n", s[highestScoreIndex].age);
+    switch (s[highestScoreIndex].sc) {
+        case A:
+            printf("Score: A\n");
+            break;
+        case B:
+            printf("Score: B\n");
+            break;
+        case C:
+            printf("Score: C\n");
+            break;
+        case D:
+            printf("Score: D\n");
+            break;
+        case F:
+            printf("Score: F\n");
+            break;
+    }
+    return 0;
+}
+
+int main() {
+    int choice;
+    int c = 0;
+
+    while (1) {
+        printf("1. Add student\n");
+        printf("2. Display students\n");
+        printf("3. Find highest-scoring student\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: {
+                if (c == MAX_STUDENTS) {
+                    printf("Maximum number of students reached.\n");
+                } else {
+                    struct Students newStudent;
+                    printf("Enter name: ");
+                    scanf("%s", newStudent.name);
+                    printf("Enter age: ");
+                    scanf("%d", &newStudent.age);
+                    printf("Enter score (A, B, C, D, F): ");
+                    char score;
+                    scanf(" %c", &score);
+                    switch (score) {
+                        case 'A':
+                            newStudent.sc = A;
+                            break;
+                        case 'B':
+                            newStudent.sc = B;
+                            break;
+                        case 'C':
+                            newStudent.sc = C;
+                            break;
+                        case 'D':
+                            newStudent.sc = D;
+                            break;
+                        case 'F':
+                            newStudent.sc = F;
+                            break;
+                        default:
+                            newStudent.sc = F;
+                            break;
+                    }
+
+                    students[c] = newStudent;
+                    c++;
+
+                    addStudent(&students[c - 1]);
+                }
+}}}}
