@@ -1,0 +1,82 @@
+#include <stdio.h>
+
+int decimalToBinary(int n){
+    int binary[100];
+    int i = 0;
+    int x = n;
+
+    while (x > 0){ 
+        binary[i] = x % 2;
+        x = x / 2;
+        i++;
+    }
+
+    printf("Binary equivalent: ");
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%d", binary[j]);
+    }
+    printf("\n");
+    return 0;
+}
+
+int decimalToOctal(int n1) {
+    int octal[100];
+    int i = 0;
+    int x = n1;
+
+    while (x > 0) {
+        octal[i] = x % 8;
+        x = x / 8;
+        i++;
+    }
+
+    printf("Octal equivalent: ");
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%d", octal[j]);
+    }
+    printf("\n");
+    return 0;
+}
+
+int decimalToHexadecimal(int decimal) {
+    int hexadecimal[100];
+    int i = 0;
+    int x = decimal;
+
+    while (x > 0) {
+        int remainder = x % 16;
+
+        if (remainder < 10) {
+            hexadecimal[i] = remainder;
+        } else {
+            hexadecimal[i] = remainder + 55;
+        }
+
+        x = x / 16;
+        i++;
+    }
+
+    printf("Hexadecimal equivalent: ");
+    for (int j = i - 1; j >= 0; j--) {
+        if (hexadecimal[j] >= 10) {
+            printf("%c", hexadecimal[j]);
+        } else {
+            printf("%d", hexadecimal[j]);
+        }
+    }
+    printf("\n");
+    return 0;
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    if (n <=0) {
+        printf("Error: Value should be greater than 0\n");
+    } else {
+        decimalToBinary(n);
+        decimalToOctal(n);
+        decimalToHexadecimal(n);
+    }
+    return 0;
+}
