@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int chkars(int x) {
+            int mod, n, y;
+                int s = 0;
+                    y = x;
+                        while (y > 0) {
+                                        mod = y % 10;
+                                                s = s + (mod * mod * mod);
+                                                        y = y / 10;
+                                                            }
+                            return s;
+}
+
+int main() {
+            int c,n, ars,i;
+            scanf("%d",&c);
+            for(i=0;i<c;i++){
+                    scanf("%d", &n);
+                        ars = chkars(n);
+
+                            if (ars == n) {
+                                            printf("Yes\n");
+                                                } else {
+                                                                printf("No\n");
+                                                                    }
+}
+                                return 0;
+}
