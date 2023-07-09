@@ -1,0 +1,113 @@
+#include <stdio.h>
+
+#define MAX_NAME_LENGTH 50
+#define MAX_STUDENTS 3
+
+typedef enum {
+    A,
+    B,
+    C,
+    D,
+    F
+} Score;
+
+typedef struct {
+    char name[MAX_NAME_LENGTH];
+    int age;
+    Score score;
+} Student;
+
+void addStudent(Student students[], int *count) {
+    if (*count >= MAX_STUDENTS) {
+        printf("Maximum number of students reached.\n");
+        return;
+    }
+
+    Student newStudent;
+    printf("Enter name: ");
+    scanf("%s", newStudent.name);
+    printf("Enter age: ");
+    scanf("%d", &newStudent.age);
+    printf("Enter score (A=0, B=1, C=2, D=3, F=4): ");
+    scanf("%d", &newStudent.score);
+    students[*count] = newStudent;
+    (*count)++;
+
+    printf("Student added successfully.\n");
+}
+
+void displayStudents(const Student students[], int count) {
+    if (count == 0) {
+        printf("No students to display.\n");
+        return;
+    }
+    for (int i = 0; i < count; i++) {
+        printf("Student %d:\n", i + 1);
+        printf("Name: %s\n", students[i].name);
+        printf("Age: %d\n", students[i].age);
+        printf("Score: %d\n", students[i].score);
+        printf("\n");
+    }
+}
+
+int findHighestScoringStudent(const Student students[], int count) {
+    if (count == 0) {
+        return -1;
+    }
+
+    int highestIndex = 0;
+    for (int i = 1; i < count; i++) {
+        if (students[i].score > students[highestIndex].score)
+            highestIndex = i;
+    }
+    return highestIndex;
+}
+
+int main() {
+    Student students[MAX_STUDENTS];
+    int choice;
+    int count = 0;
+    do {
+        printf("Menu:\n");
+        printf("1. Add Student\n");
+        printf("2. Display Students\n");
+        printf("3. Find Highest-Scoring Student\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                addStudent(students, &count);
+                break;
+
+            case 2:
+                displayStudents(students, count);
+                break;
+
+            case 3: {
+                int highestIndex = findHighestScoringStudent(students, count);
+                if (highestIndex == -1) {
+                    printf("No students to find the highest-scoring student.\n");
+                } else {
+                    printf("The highest-scoring student is:\n");
+                    printf("Name: %s\n", students[highestIndex].name);
+                    printf("Age: %d\n", students[highestIndex].age);
+                    printf("Score: %d\n", students[highestIndex].score);
+                }
+                break;
+            }
+
+            case 4:
+                printf("Exiting the program. Thank you for using our system!\n");
+                break;
+
+            default:
+                printf("Invalid choice. Please try again.\n");
+                break;
+        }
+        printf("\n");
+    } while (choice != 4);
+
+    return 0;
+}
