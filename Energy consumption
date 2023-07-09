@@ -1,0 +1,60 @@
+#include<stdio.h>
+int main(){
+	char name[5][10];
+	int ebillnum[5] ;
+	int units[5] ;
+       //infomation is collected
+	for(int i=0 ; i<5 ;i++){
+        printf("Please enter your name : \n");
+        for(int j=0 ; j<10 ;j++){
+       	 scanf("%c",&name[i][j]);}
+         printf("Please enter your electricity board number : \n");
+	 scanf("%d",&ebillnum[i]);
+         printf("Please enter the units consumed : \n");
+         scanf("%d",&units[i]);
+          
+	 int price = 0 ;
+
+         if(units[i]>600){
+         price=(units[i]-600)*8 ;
+         units[i]=units[i]-600; 
+         if(units[i]>500){
+         price=price + (units[i]-500)*6 ;
+         units[i]=units[i]-500;
+         if(units[i]>400){
+	 price=price+ (units[i]-400)*4.5 ;
+         units[i]=units[i]-400; 
+         if(units[i]>100){
+         price=price + (units[i]-100)*2.25 ;
+         units[i]=units[i]-100;}}}}
+ 
+         if(units[i]>500){
+         price=(units[i]-500)*6 ;
+         units[i]=units[i]-500;
+	 if(units[i]>400){
+         price=price +(units[i]-400)*4.5 ;
+         units[i]=units[i]-400;
+         if(units[i]>100){
+         price=price +(units[i]-100)*2.25 ;
+         units[i]=units[i]-100;}}}
+
+
+         if(units[i]>400){
+         price=(units[i]-400)*4.5 ;
+         units[i]=units[i]-400;
+         if(units[i]>100){
+         price=price+(units[i]-100)*2.25 ;
+         units[i]=units[i]-100;}}
+
+
+         if(units[i]>100){
+         price=price+ (units[i]-100)*2.25 ;
+         units[i]=units[i]-100;}
+
+         else{
+         }	
+
+	 
+	printf("The electricity bill is %d.\n",price);}
+        
+      }
