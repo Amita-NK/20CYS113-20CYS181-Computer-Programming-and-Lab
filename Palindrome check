@@ -1,0 +1,16 @@
+#include<stdio.h>
+int main(){
+//declaring the variables
+    int n,remainder,original,reversed;
+while (n != 0) {
+     remainder = n % 10;
+         reversed = reversed * 10 + remainder;
+             n /= 10;
+            }
+//checking if it is a palindrome
+             if (original == reversed)
+                 printf("%d is a palindrome.", original);
+                 else
+                     printf("%d is not a palindrome.", original);
+                     return 0;
+ }
